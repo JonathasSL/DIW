@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<!-- saved from url=(0091)http://webdav.sistemas.pucminas.br:8080/webdav/sistemas/sga/20172/1313366_index_jquery.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <title>CRUD Restify DB - jQuery</title>
+    <script>
+        const url_WS = 'http://www.smartsoft.com.br/webservice/restifydb/empresa/filmes';
+
+        // Função para executar o Retrieve do CRUD
+        function execRetrieve() {
+            $.ajax({
+                url: url_WS,
+                method: "GET",
+                success: function (dados) {
+                    var tabelaHTML = '';
+
+                    // Montagem da tabela HTML
+                    tabelaHTML = '<table border="1">';
+                    for (i = 0; i < dados.restify.rows.length; i++) {
+                        tabelaHTML += '<tr>';
+                        tabelaHTML += '<td><img src="' + dados.restify.rows[i].values.imagem_url.value + '"></td>';
+                        tabelaHTML += '<td><h2>' + dados.restify.rows[i].values.titulo.value + '</h2>';
+                        tabelaHTML += dados.restify.rows[i].values.sinopse.value + '<br>';
+                        tabelaHTML += '<p>Categoria: ' + dados.restify.rows[i].values.categoria.value + '<br>';
+                        tabelaHTML += 'Diretor: ' + dados.restify.rows[i].values.diretor.value + '<br>';
+                        tabelaHTML += 'Ano: ' + dados.restify.rows[i].values.ano.value + '<br>';
+                        tabelaHTML += 'Duração: ' + dados.restify.rows[i].values.duracao.value + ' min</p>';
+                        tabelaHTML += '<p><a href="javascript:execDelete(' + dados.restify.rows[i].values.id.value + ')">Excluir</a> | <a href="javascript:">Modificar</a></p>';
+                        tabelaHTML += '</td></tr>';
+                    }
+                    tabelaHTML += '</table>';
+
+                    // Inserção do código HTML na DIV
+                    $('#div_listagem').html(tabelaHTML);
+                }
+            });
+
+        }
+
+        // Função para executar o Delete do CRUD
+        function execDelete(id) {
+            // Confirma exclusão
+            if (confirm('Deseja realmente excluir o registro ' + id + '?')) {
+                $.ajax({
+                    url: url_WS + '/' + id,
+                    method: "DELETE",
+                    success: function () {
+                        alert('Registro exlcuído.');
+
+                        // Recarrega listagem
+                        execRetrieve();
+                    }
+                });
+            }
+        }
+
+        // Função para executar o Create do CRUD
+        function execCreate(titulo, categoria, diretor, ano, duracao, sinopse, imagem_url) {
+            $.ajax({
+                url: url_WS,
+                method: "POST",
+                contentType: 'application/x-www-form-urlencoded',
+                data: '_data={"titulo": "' + titulo.value + '", ' +
+                    '"diretor": "' + diretor.value + '", ' +
+                    '"ano": "' + ano.value + '", ' +
+                    '"duracao": "' + duracao.value + '", ' +
+                    '"sinopse": "' + sinopse.value + '", ' +
+                    '"imagem_url": "' + imagem_url.value + '"}',
+                success: function (dados) {
+                    alert('Registro incluído com sucesso.');
+
+                    // Recarrega listagem
+                    execRetrieve();
+                    document.getElementById('formFilme').reset();
+                }
+
+            });
+        }
+    </script>
+</head>
+
+<body onload="execRetrieve();">
+    <div id="div_listagem"><table border="1"><tbody><tr><td><img src="./CRUD Restify DB - jQuery_files/uu"></td><td><h2>qq</h2>yy<br><p>Categoria: <br>Diretor: ee<br>Ano: 0<br>Duração: 0 min</p><p><a href="javascript:execDelete(100)">Excluir</a> | <a href="javascript:">Modificar</a></p></td></tr></tbody></table></div>
+    <div class="div_form">
+        <form id="formFilme" action="javascript:execCreate(this.titulo, this.categoria, this.diretor, this.ano, this.duracao, this.sinopse, this.imagem_url)">
+            <p>
+                <label for="titulo">Título</label>
+                <input type="text" id="titulo">
+            </p>
+            <p>
+                <label for="categoria">Categoria</label>
+                <input type="text" id="categoria">
+            </p>
+            <p>
+                <label for="diretor">Diretor</label>
+                <input type="text" id="diretor">
+            </p>
+            <p>
+                <label for="ano">Ano</label>
+                <input type="text" id="ano">
+            </p>
+            <p>
+                <label for="duracao">Duração</label>
+                <input type="text" id="duracao">
+            </p>
+            <p>
+                <label for="sinopse">Sinopse</label>
+                <textarea name="sinopse" id="sinopse" cols="30" rows="10"></textarea>
+            </p>
+            <p>
+                <label for="imagem_url">URL da Imagem</label>
+                <input type="text" id="imagem_url">
+            </p>
+            <input type="submit" value="Ok">
+        </form>
+    </div>
+
+    <script src="./CRUD Restify DB - jQuery_files/jquery-3.2.1.min.js.download"></script>
+
+
+</body></html>
