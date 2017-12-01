@@ -1,7 +1,10 @@
 <!DOCTYPE html>
 <!-- saved from url=(0091)http://webdav.sistemas.pucminas.br:8080/webdav/sistemas/sga/20172/1313366_index_jquery.html -->
-<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    
+<html lang="en">
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
     <title>CRUD Restify DB - jQuery</title>
     <script>
         const url_WS = 'http://www.smartsoft.com.br/webservice/restifydb/empresa/filmes';
@@ -80,7 +83,29 @@
 </head>
 
 <body onload="execRetrieve();">
-    <div id="div_listagem"><table border="1"><tbody><tr><td><img src="./CRUD Restify DB - jQuery_files/uu"></td><td><h2>qq</h2>yy<br><p>Categoria: <br>Diretor: ee<br>Ano: 0<br>Duração: 0 min</p><p><a href="javascript:execDelete(100)">Excluir</a> | <a href="javascript:">Modificar</a></p></td></tr></tbody></table></div>
+    <div id="div_listagem">
+        <table border="1">
+            <tbody>
+                <tr>
+                    <td>
+                        <img src="./CRUD Restify DB - jQuery_files/uu">
+                    </td>
+                    <td>
+                        <h2>qq</h2>yy
+                        <br>
+                        <p>Categoria:
+                            <br>Diretor: ee
+                            <br>Ano: 0
+                            <br>Duração: 0 min</p>
+                        <p>
+                            <a href="javascript:execDelete(100)">Excluir</a> |
+                            <a href="javascript:">Modificar</a>
+                        </p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
     <div class="div_form">
         <form id="formFilme" action="javascript:execCreate(this.titulo, this.categoria, this.diretor, this.ano, this.duracao, this.sinopse, this.imagem_url)">
             <p>
@@ -118,4 +143,6 @@
     <script src="./CRUD Restify DB - jQuery_files/jquery-3.2.1.min.js.download"></script>
 
 
-</body></html>
+</body>
+
+</html>
