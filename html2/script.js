@@ -11,7 +11,7 @@ function execRetrieve() {
             var tabelaHTML = '';
 
             //montagem da tabela de perfis
-            tabelaHTML = '<table border="2">';
+            tabelaHTML = '<table border="1">';
             for (i = 0; i < dados.restify.rowCount; i++) {
                 tabelaHTML += '<tr><td><img src="' + dados.restify.rows[i].values.foto_url.value + '"></td>'
                 tabelaHTML += '<td><h2>' + dados.restify.rows[i].values.nome.value + '</h2>';
@@ -19,13 +19,11 @@ function execRetrieve() {
                 tabelaHTML += 'Data de nascimento: ' + dados.restify.rows[i].values.data_nascimento.value + '<br>';
                 tabelaHTML += 'Cidade: ' + dados.restify.rows[i].values.cidade.value + '<br>';
                 tabelaHTML += 'Website: ' + dados.restify.rows[i].values.site_url.value + '<br></p>';
-                tabelaHTML += '<a href="javascript:execUpdate(' + dados.restify.rows[i].values.id.value + ');">Atualizar</a><br>'
+                tabelaHTML += '<a href="javascript:execUpdate(' + dados.restify.rows[i].values.id.value + ' ' + dados.restify.rows[i].values.nome.value + ' ' + dados.restify.rows[i].values.sexo.value + ' ' + dados.restify.rows[i].values.data_nascimento.value + ' ' + dados.restify.rows[i].values.cidade.value + ' ' + dados.restify.rows[i].values.site_url.value + ' ' + dados.restify.rows[i].values.foto_url.value + ');">Atualizar</a><br>'
                 tabelaHTML += '<a href="javascript:execDelete(' + dados.restify.rows[i].values.id.value + ');">Excluir</a></td></tr>';
             }
             tabelaHTML += '</table>';
-
             document.getElementById('div_listagem').innerHTML = tabelaHTML;
-
         }
     }
 
@@ -71,12 +69,13 @@ function execCreate(nome, sexo, data_nascimento, cidade, site_url, foto_url) {
 }
 
 //executa o Update do CRUD
-function execUpdate(nome, sexo, data_nascimento, cidade, site_url, foto_url, id) {
+function execUpdate(id, nome, sexo, data_nascimento, cidade, site_url, foto_url) {
     var req = new XMLHttpRequest;
-    var dados = '_data={"nome":"' + nome.value + '", "sexo":"' + sexo.value + '", "data_nascimento":"' + data_nascimento.value + '", "cidade":"' + cidade.value + '", "site_url":"' + site_url.value + '", "foto_url":"' + foto_url.value + '"}';
-
+    alert('ate aqui deu 1');
+    var dados = '_data= {"nome":"' + nome.value + '", "sexo":"' + sexo.value + '", "data_nascimento":"' + data_nascimento.value + '", "cidade":"' + cidade.value + '", "site_url":"' + site_url.value + '", "foto_url":"' + foto_url.value + '"}';
+    alert('ate aqui deu 2');
     req.onreadystatechange = function () {
-        //alert('ate aqui deu');
+        alert('ate aqui deu 3');
         if ((req.readyState == 4) && (req.status == 200)) {
             alert('Perfil alterado com sucesso.');
 
