@@ -13,8 +13,8 @@ function execRetrieve() {
             //montagem da tabela de perfis
             tabelaHTML = '<table border="2">';
             for (i = 0; i < dados.restify.rowCount; i++) {
-                tabelaHTML += '<tr><td><img src="' + dados.restify.rows[i].values.foto_url.value + '"></td>'
-                tabelaHTML += '<td><h2>' + dados.restify.rows[i].values.nome.value + '</h2>';
+                tabelaHTML += '<tr><td id="foto"><img src="' + dados.restify.rows[i].values.foto_url.value + '"></td>'
+                tabelaHTML += '<td id="texto"><h2>' + dados.restify.rows[i].values.nome.value + '</h2>';
                 tabelaHTML += '<p>Sexo: ' + dados.restify.rows[i].values.sexo.value + '<br>';
                 tabelaHTML += 'Data de nascimento: ' + dados.restify.rows[i].values.data_nascimento.value + '<br>';
                 tabelaHTML += 'Cidade: ' + dados.restify.rows[i].values.cidade.value + '<br>';
@@ -40,7 +40,7 @@ function execDelete (id) {
         
         req.onreadystatechange = function (){
             if ((req.readyState == 4) && (req.status == 200)) {
-                alert ('Registro '+ id +' exluido com sucesso');
+                alert ('Registro '+ id +' excluido com sucesso');
                 //recarrega dados do banco
                 execRetrieve();
             }
