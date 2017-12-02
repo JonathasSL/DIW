@@ -19,7 +19,7 @@ function execRetrieve() {
                 tabelaHTML += 'Data de nascimento: ' + dados.restify.rows[i].values.data_nascimento.value + '<br>';
                 tabelaHTML += 'Cidade: ' + dados.restify.rows[i].values.cidade.value + '<br>';
                 tabelaHTML += 'Website: ' + dados.restify.rows[i].values.site_url.value + '<br></p>';
-                tabelaHTML += '<a href="javascript:execUpdate(' + dados.restify.rows[i].values.id.value + ');">Atualizar </a>'
+                tabelaHTML += '<a href="javascript:execUpdate(' + dados.restify.rows[i].values.id.value + ');">Atualizar</a><br>'
                 tabelaHTML += '<a href="javascript:execDelete(' + dados.restify.rows[i].values.id.value + ');">Excluir</a></td></tr>';
             }
             tabelaHTML += '</table>';
@@ -40,7 +40,7 @@ function execDelete (id) {
         
         req.onreadystatechange = function (){
             if ((req.readyState == 4) && (req.status == 200)) {
-                alert ('Registro '+ id +' exluido com sucesso:');
+                alert ('Registro '+ id +' exluido com sucesso');
                 //recarrega dados do banco
                 execRetrieve();
             }
