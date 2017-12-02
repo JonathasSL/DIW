@@ -3,27 +3,27 @@ url = 'http://www.smartsoft.com.br/webservice/restifydb/empresa/puc_perfil';
 //executa retrieve do CRUD 
 function execRetrieve() {
     var req = new XMLHttpRequest;
-
     req.onreadystatechange = function () {
         if ((req.readyState == 4) && (req.status == 200)) {
-
             var dados = JSON.parse(req.responseText);
             var tabelaHTML = '';
 
             //montagem da tabela de perfis
-            tabelaHTML = '<table border="1">';
+            tabelaHTML = '<table border="2">';
             for (i = 0; i < dados.restify.rowCount; i++) {
-                tabelaHTML += '<tr><td><img src="' + dados.restify.rows[i].values.foto_url.value + '"></td>'
-                tabelaHTML += '<td><h2>' + dados.restify.rows[i].values.nome.value + '</h2>';
+                tabelaHTML += '<tr><td id="foto"><img src="' + dados.restify.rows[i].values.foto_url.value + '"></td>'
+                tabelaHTML += '<td id="texto"><h2>' + dados.restify.rows[i].values.nome.value + '</h2>';
                 tabelaHTML += '<p>Sexo: ' + dados.restify.rows[i].values.sexo.value + '<br>';
                 tabelaHTML += 'Data de nascimento: ' + dados.restify.rows[i].values.data_nascimento.value + '<br>';
                 tabelaHTML += 'Cidade: ' + dados.restify.rows[i].values.cidade.value + '<br>';
                 tabelaHTML += 'Website: ' + dados.restify.rows[i].values.site_url.value + '<br></p>';
-                tabelaHTML += '<a href="javascript:execUpdate(' + dados.restify.rows[i].values.id.value + ' ' + dados.restify.rows[i].values.nome.value + ' ' + dados.restify.rows[i].values.sexo.value + ' ' + dados.restify.rows[i].values.data_nascimento.value + ' ' + dados.restify.rows[i].values.cidade.value + ' ' + dados.restify.rows[i].values.site_url.value + ' ' + dados.restify.rows[i].values.foto_url.value + ');">Atualizar</a><br>'
+                tabelaHTML += '<a href="javascript:execUpdate(' + dados.restify.rows[i].values.id.value + ');">Atualizar</a><br>'
                 tabelaHTML += '<a href="javascript:execDelete(' + dados.restify.rows[i].values.id.value + ');">Excluir</a></td></tr>';
             }
             tabelaHTML += '</table>';
+
             document.getElementById('div_listagem').innerHTML = tabelaHTML;
+
         }
     }
 
@@ -38,7 +38,7 @@ function execDelete (id) {
         
         req.onreadystatechange = function (){
             if ((req.readyState == 4) && (req.status == 200)) {
-                alert ('Registro '+ id +' exluido com sucesso');
+                alert ('Registro '+ id +' excluido com sucesso');
                 //recarrega dados do banco
                 execRetrieve();
             }
@@ -69,13 +69,12 @@ function execCreate(nome, sexo, data_nascimento, cidade, site_url, foto_url) {
 }
 
 //executa o Update do CRUD
-function execUpdate(id, nome, sexo, data_nascimento, cidade, site_url, foto_url) {
+function execUpdate(nome, sexo, data_nascimento, cidade, site_url, foto_url, id) {
     var req = new XMLHttpRequest;
-    alert('ate aqui deu 1');
-    var dados = '_data= {"nome":"' + nome.value + '", "sexo":"' + sexo.value + '", "data_nascimento":"' + data_nascimento.value + '", "cidade":"' + cidade.value + '", "site_url":"' + site_url.value + '", "foto_url":"' + foto_url.value + '"}';
-    alert('ate aqui deu 2');
+    var dados = '_data={"nome":"' + nome.value + '", "sexo":"' + sexo.value + '", "data_nascimento":"' + data_nascimento.value + '", "cidade":"' + cidade.value + '", "site_url":"' + site_url.value + '", "foto_url":"' + foto_url.value + '"}';
+
     req.onreadystatechange = function () {
-        alert('ate aqui deu 3');
+        //alert('ate aqui deu');
         if ((req.readyState == 4) && (req.status == 200)) {
             alert('Perfil alterado com sucesso.');
 
@@ -86,25 +85,4 @@ function execUpdate(id, nome, sexo, data_nascimento, cidade, site_url, foto_url)
     req.open('PUT', url + '/' + id, true);
     req.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
     req.send(dados);
-}
-//login
-function onSignIn(googleUser)
-{
-    var profile=googleUser.getBasicProfile();
-    $(".g=signin2").css("display","none");
-    $(".data").css("display","block");
-    $("#pic").attr('src',profile.getImageUrl());
-    $("#email").text(profile.getEmail());
-}
-
-function signOut()
-{
-    var auth2 = gapi.auth2.getAuthInstance();
-    auth2.signOut().then(function(){
-       
-        alert("you have succesfully signed out");
-         
-        $(".g-signin2").css("display","block");
-        $(".data").css("display","none");
-    });
 }
