@@ -6,21 +6,32 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Crud + Restify + Bootsrap</title>
     <script src="script.js"></script>
-    
+    <link rel="stylesheet" href="stylesheet.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta.2/css/bootstrap.min.css">
 </head>
 <body onload="execRetrieve();">
-    <div id="div_listagem">
+    
+    <div class="container-fluid">
+        <div class="row">
+            <div id="div_listagem" class="col-md-12">
+            </div>
+        </div>
     </div>
-    <div id="div_form">
-        <form id="formperfil"action="javascript:execCreate(this.nome, this.sexo, this.data_nascimento, this.cidade, this.site_url, this.foto_url);">
-            <p class="info"><label for="nome">Nome</label><br><input placeholder="Nome" type="text" id="nome"></p>
-            <p class="info"><label for="sexo">Sexo</label><br><input placeholder="Sexo" type="text" id="sexo"></p>
-            <p class="info"><label for="data_nascimento">Data de nascimento</label><br><input placeholder="Data de nascimento" type="text" id="data_nascimento"></p>
-            <p class="info"><label for="cidade">Cidade</label><br><input placeholder="Cidade" type="text" id="cidade"></p>
-            <p class="info"><label for="site_url">Website</label><br><input placeholder="Website" type="text" id="site_url"></p>
-            <p class="info"><label for="foto_url">Foto URL</label><br><input placeholder="Foto" type="text" id="foto_url"></p>
-            <p class="btn btn-prymary"><input type="submit" value="Ok"></p>
-        </form>
-    </div>
+    <div class="container">
+            <div class="row">
+                <div id="div_form" class="col-md-offset-3 col-md-6">
+                    <form id="formperfil"action="javascript:execCreate(this.nome, this.sexo, this.data_nascimento, this.cidade, this.site_url, this.foto_url);">
+                        <p class="info"><span for="nome" style="text-align:center;" class="label label-default">Nome</span><br> <input placeholder="Nome" type="text" id="nome"></p>
+                        <p class="info"><label for="sexo">Sexo</label><br>                                                      <input placeholder="Sexo" type="text" id="sexo"></p>
+                        <p class="info"><label for="data_nascimento">Data de nascimento</label><br>                             <input placeholder="Data de nascimento" type="text" id="data_nascimento"></p>
+                        <p class="info"><label for="cidade">Cidade</label><br>                                                  <input placeholder="Cidade" type="text" id="cidade"></p>
+                        <p class="info"><label for="site_url">Website</label><br>                                               <input placeholder="Website" type="text" id="site_url"></p>
+                        <p class="info"><label for="foto_url">Foto URL</label><br>                                              <input placeholder="Foto" type="text" id="foto_url"></p>
+                        <p class="btn btn-prymary"><input type="submit" value="Ok" class="btn"></p>
+                    </form>
+                </div>
+            </div>
+        </div>
+
 </body>
 </html>
