@@ -21,3 +21,16 @@ body {
 #div_form {
   text-align: center;
 }
+
+#foto {
+  max-height: 20em;
+  max-width: 20em;
+}
+
+.tabela {
+  text-align: center;
+}
+
+.table_row {
+
+}

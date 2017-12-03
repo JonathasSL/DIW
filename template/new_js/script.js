@@ -9,14 +9,15 @@ function execRetrieve() {
             var tabelaHTML = '';
 
             //montagem da tabela de perfis
-            tabelaHTML = '<table border="2">';
+            tabelaHTML = '<table class="tabela table">';
+            tabelaHTML += '<thead><th>Foto</th><th>Informações</th>';
             for (i = 0; i < dados.restify.rowCount; i++) {
-                tabelaHTML += '<tr><td id="foto"><img src="' + dados.restify.rows[i].values.foto_url.value + '"></td>'
+                tabelaHTML += '<tr class="table_row"><td><img id="foto" src="' + dados.restify.rows[i].values.foto_url.value + '"></td>'
                 tabelaHTML += '<td id="texto"><h2>' + dados.restify.rows[i].values.nome.value + '</h2>';
-                tabelaHTML += '<p>Sexo: ' + dados.restify.rows[i].values.sexo.value + '<br>';
-                tabelaHTML += 'Data de nascimento: ' + dados.restify.rows[i].values.data_nascimento.value + '<br>';
-                tabelaHTML += 'Cidade: ' + dados.restify.rows[i].values.cidade.value + '<br>';
-                tabelaHTML += 'Website: ' + dados.restify.rows[i].values.site_url.value + '<br></p>';
+                tabelaHTML += '<p>Sexo:<br>' + dados.restify.rows[i].values.sexo.value + '<br>';
+                tabelaHTML += 'Data de nascimento:<br>' + dados.restify.rows[i].values.data_nascimento.value + '<br>';
+                tabelaHTML += 'Cidade:<br>' + dados.restify.rows[i].values.cidade.value + '<br>';
+                tabelaHTML += 'Website:<br>' + dados.restify.rows[i].values.site_url.value + '<br></p>';
                 tabelaHTML += '<a href="javascript:execUpdate(' + dados.restify.rows[i].values.id.value + ');">Atualizar</a><br>'
                 tabelaHTML += '<a href="javascript:execDelete(' + dados.restify.rows[i].values.id.value + ');">Excluir</a></td></tr>';
             }

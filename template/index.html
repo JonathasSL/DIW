@@ -57,8 +57,8 @@
       <h1 class="my-4">Cadastros
         <small>Realizados</small>
       </h1>
-
-      <div id="div_listagem">
+      
+      <div id="div_listagem" class="table-responsive">
       </div>
 
       <!-- Project One
@@ -129,8 +129,9 @@
       <!-- /.row -->
 
       <!-- <hr> -->
-      <div id="div_form">
-        <form id="formperfil"action="javascript:execCreate(this.nome, this.sexo, this.data_nascimento, this.cidade, this.site_url, this.foto_url);">
+      <div class="row">
+        <div id="div_form" class="col-md-offset-3 col-6">
+          <form id="formperfil" action="javascript:execCreate(this.nome, this.sexo, this.data_nascimento, this.cidade, this.site_url, this.foto_url);">
             <p class="info"><label for="nome">Nome</label><br><input placeholder="Nome" type="text" id="nome"></p>
             <hr>
             <p class="info"><label for="sexo">Sexo</label><br><input placeholder="Sexo" type="text" id="sexo"></p>
@@ -143,8 +144,9 @@
             <hr>
             <p class="info"><label for="foto_url">Foto URL</label><br><input placeholder="Foto" type="text" id="foto_url"></p>
             <p ><input class="btn" type="submit" value="Cadastrar"></p>
-        </form>
-    </div>
+          </form>
+        </div>
+      </div>
 
       <!-- Pagination 
       <ul class="pagination justify-content-center">
