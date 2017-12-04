@@ -4,7 +4,7 @@
  * Licensed under MIT (https://github.com/BlackrockDigital/startbootstrap-1-col-portfolio/blob/master/LICENSE)
  */
 
-body {
+ body {
   padding-top: 54px;
 }
 
@@ -27,10 +27,22 @@ body {
   max-width: 20em;
 }
 
-.tabela {
+.table {
   text-align: center;
+}
+
+.btn {
+  margin: 1em;
+}
+
+.td_foto {
+  align-content: 0px auto;
+}
+.td_texto {
+  
 }
 
 .table_row {
 
 }
+
