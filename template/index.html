@@ -10,7 +10,10 @@
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Crud + Restify + Bootsrap</title>
     <script src="new_js/script.js"></script>
-
+    
+    <!--google api-->
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+    <meta name="google-signin-client_id" content="819713284844-5difiiseq4h9peig38kl9qassms6banf.apps.googleusercontent.com">
 
     <!-- Bootstrap core CSS -->
     <link href="vendor/bootstrap/css/bootstrap.min.css" rel="stylesheet">
@@ -21,7 +24,6 @@
   </head>
 
   <body onload="execRetrieve();">
-
     <!-- Navigation -->
     <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top">
       <div class="container">
@@ -31,7 +33,14 @@
         </button>
         <div class="collapse navbar-collapse" id="navbarResponsive">
           <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
+            <li class="nav-item">
+            <a class="nav-link" href="#">Cadastrar</a>
+            </li>
+            <li class="nav-item">
+            <div class="g-signin2" data-onsuccess="onSignIn"></div>
+            </li>
+           <!--
+           <li class="nav-item active">
               <a class="nav-link" href="#">Home
                 <span class="sr-only">(current)</span>
               </a>
@@ -45,6 +54,7 @@
             <li class="nav-item">
               <a class="nav-link" href="#">Contact</a>
             </li>
+            -->
           </ul>
         </div>
       </div>
@@ -52,14 +62,42 @@
 
     <!-- Page Content -->
     <div class="container">
+        
+     <!-- Form Cadastro -->
+    <div class="container">
+      <div class="row">
+        <div id="div_form" class="col-lg-4 col-lg-offset-4">
+          <form id="formperfil" action="javascript:execCreate(this.nome, this.sexo, this.data_nascimento, this.cidade, this.site_url, this.foto_url);">
+            <p class="info"><label for="nome">Nome</label><br><input placeholder="Nome" type="text" id="nome"></p>
+            <hr>
+            <p class="info"><label for="sexo">Sexo</label><br><input placeholder="Sexo" type="text" id="sexo"></p>
+            <hr>
+            <p class="info"><label for="data_nascimento">Data de nascimento</label><br><input placeholder="Data de nascimento" type="text" id="data_nascimento"></p>
+            <hr>
+            <p class="info"><label for="cidade">Cidade</label><br><input placeholder="Cidade" type="text" id="cidade"></p>
+            <hr>
+            <p class="info"><label for="site_url">Website</label><br><input placeholder="Website" type="text" id="site_url"></p>
+            <hr>
+            <p class="info"><label for="foto_url">Foto URL</label><br><input placeholder="Foto" type="text" id="foto_url"></p>
+            <p ><input class="btn" type="submit" value="Cadastrar"></p>
+          </form>
+        </div>
+      </div>
+    </div>
 
       <!-- Page Heading -->
       <h1 class="my-4">Cadastros
         <small>Realizados</small>
       </h1>
-      
-      <div id="div_listagem" class="table-responsive">
+    </div>
+    
+    <div class="div_formupdate">
+    </div>
+    
+    <div class="container-fluid">
+      <div id="div_listagem" class="row table table-responsive">
       </div>
+    </div>
 
       <!-- Project One
       <div class="row">
@@ -129,24 +167,7 @@
       <!-- /.row -->
 
       <!-- <hr> -->
-      <div class="row">
-        <div id="div_form" class="col-md-offset-3 col-6">
-          <form id="formperfil" action="javascript:execCreate(this.nome, this.sexo, this.data_nascimento, this.cidade, this.site_url, this.foto_url);">
-            <p class="info"><label for="nome">Nome</label><br><input placeholder="Nome" type="text" id="nome"></p>
-            <hr>
-            <p class="info"><label for="sexo">Sexo</label><br><input placeholder="Sexo" type="text" id="sexo"></p>
-            <hr>
-            <p class="info"><label for="data_nascimento">Data de nascimento</label><br><input placeholder="Data de nascimento" type="text" id="data_nascimento"></p>
-            <hr>
-            <p class="info"><label for="cidade">Cidade</label><br><input placeholder="Cidade" type="text" id="cidade"></p>
-            <hr>
-            <p class="info"><label for="site_url">Website</label><br><input placeholder="Website" type="text" id="site_url"></p>
-            <hr>
-            <p class="info"><label for="foto_url">Foto URL</label><br><input placeholder="Foto" type="text" id="foto_url"></p>
-            <p ><input class="btn" type="submit" value="Cadastrar"></p>
-          </form>
-        </div>
-      </div>
+
 
       <!-- Pagination 
       <ul class="pagination justify-content-center">
@@ -174,13 +195,17 @@
       </ul>
       -->
 
-    </div>
-    <!-- /.container -->
+    <!-- </div>
+    /.container -->
+    
+    <div id="div_alerta"></div>
+    
+    
 
     <!-- Footer -->
     <footer class="py-5 bg-dark">
       <div class="container">
-        <p class="m-0 text-center text-white">Copyright &copy; Crud + Restify 2017</p>
+        <p class="m-0 text-center text-white">Jonathas Leandro, Mateus Ferreira e Gabriel Xavier 2017</p>
       </div>
       <!-- /.container -->
     </footer>
@@ -190,5 +215,5 @@
     <script src="vendor/bootstrap/js/bootstrap.bundle.min.js"></script>
 
   </body>
-
 </html>
+ 
